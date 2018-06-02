@@ -1,1 +1,24 @@
-Hello World
+﻿<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<body>
+
+<script src="config.js" charset="utf-8"></script>
+<script>
+document.write("<h1>请选择一个词开始作画！</h1>");
+var wlst = words.split(' ');
+var showlst=[];
+for(var i = 0;i<samplenum;i++){
+	var pos = Math.floor(Math.random()*wlst.length); 
+	var tp = wlst[pos];
+	showlst.push(tp);
+	wlst.splice(pos, 1);
+}
+for(var i = 0;i<samplenum;i++){
+	document.write("<h2>"+showlst[i]+"</h2>");
+}
+
+
+</script>
+
+</body>
+</html>
