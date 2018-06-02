@@ -1,24 +1,100 @@
 ﻿<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>国科大动漫协会</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Social Buttons CSS -->
+    <link href="vendor/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
 <body>
 
-<script src="config.js" charset="utf-8"></script>
-<script>
-document.write("<h1>请选择一个词开始作画！</h1>");
-var wlst = words.split(' ');
-var showlst=[];
-for(var i = 0;i<samplenum;i++){
-	var pos = Math.floor(Math.random()*wlst.length); 
-	var tp = wlst[pos];
-	showlst.push(tp);
-	wlst.splice(pos, 1);
-}
-for(var i = 0;i<samplenum;i++){
-	document.write("<h2>"+showlst[i]+"</h2>");
-}
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">国科大动漫协会</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        你画我猜
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <h4>请选择一个词开始作画：</h4>
+                        <p>
+                            <button type="button" class="btn btn-default btn-lg btn-block" id="w_idiom">Default</button>
+                            <button type="button" class="btn btn-default btn-lg btn-block" id="w_thing">Default</button>
+                            <button type="button" class="btn btn-default btn-lg btn-block" id="w_anime">Default</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
 
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
 
-</script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+    
+    <script src="config.js" charset="utf-8"></script>
+    <script>
+        var idioms = idioms.split(' ');
+        var things = things.split(' ');
+        var anime = anime.split(' ');
+        w_idiom.textContent = idioms[Math.floor(Math.random() * idioms.length)];
+        w_thing.textContent = things[Math.floor(Math.random() * things.length)];
+        w_anime.textContent = anime[Math.floor(Math.random() * anime.length)];
+        
+		$(function() {
+			$("button").click(function(){
+				if ($(this)[0].className.indexOf("disabled") == -1) {
+					$(this)[0].className = "btn btn-success btn-lg btn-block";
+					$(w_idiom)[0].className += " disabled";
+					$(w_thing)[0].className += " disabled";
+					$(w_anime)[0].className += " disabled";
+				}
+			});
+		});
+    </script>
 
 </body>
 </html>
