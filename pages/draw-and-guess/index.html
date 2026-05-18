@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="个人主站中的你画我猜独立项目页。">
+    <title>你画我猜</title>
+    <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+    <div class="site-shell page-layout">
+        <section class="content-panel">
+            <a class="page-breadcrumb" href="../../index.html">返回作品集首页</a>
+            <p class="eyebrow">Project 01</p>
+            <h1>你画我猜</h1>
+            <p class="lead">
+                这是一个独立的互动练习页。每个分类会随机抽取一个词条，选定后会锁定本轮其余选项。
+            </p>
+            <ul class="meta-list">
+                <li>页面链接独立，可直接访问和分享。</li>
+                <li>词库由页面专属数据文件提供。</li>
+                <li>保留单轮一次选择的原始玩法。</li>
+            </ul>
+        </section>
+
+        <section class="game-panel">
+            <p class="eyebrow">Game</p>
+            <h2>请选择一个词开始作画</h2>
+            <p>系统会在每个分类中随机展示一个词条，点击其中一个后将锁定本轮选择。</p>
+            <div class="game-button-grid" id="game-button-list"></div>
+            <p class="game-caption" id="game-caption">请选择一个词条开始。</p>
+        </section>
+    </div>
+
+    <script src="../../assets/data/draw-and-guess.js"></script>
+    <script src="../../assets/js/pages/draw-and-guess.js"></script>
+</body>
+</html>
