@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="COA 国服 Gist 控制台独立子页面，用于读取状态与发送固定控制动作。">
+    <title>COA 国服控制台</title>
+    <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+    <div class="site-shell page-layout">
+        <section class="content-panel">
+            <a class="page-breadcrumb" href="../../index.html">返回作品集首页</a>
+            <p class="eyebrow">Project 02</p>
+            <h1>COA 国服控制台</h1>
+            <p class="lead">
+                这是一个独立的控制台页面，用于向指定 Gist 发送固定动作，并读取 COA 国服的运行状态。页面只保存本地连接配置，不会把 Token 或 Gist ID 写回远端。
+            </p>
+            <ul class="meta-list">
+                <li>通过 GitHub Gist API 读写 `command.json` 与 `status.json`。</li>
+                <li>支持本地缓存 Token、Gist ID 和启动账号别名。</li>
+                <li>保留刷新冷却、操作冷却和状态摘要展示。</li>
+            </ul>
+        </section>
+
+        <section class="game-panel utility-panel">
+            <p class="eyebrow">Connection</p>
+            <h2>连接配置</h2>
+            <p>首次使用时请输入 GitHub Token 与目标 Gist ID。两者仅保存在当前浏览器本地缓存中。</p>
+            <div class="form-grid">
+                <label class="form-field">
+                    <span class="field-label">GitHub Token</span>
+                    <input
+                        id="token-input"
+                        class="text-input"
+                        type="password"
+                        placeholder="请输入 GitHub Personal Access Token"
+                        autocomplete="off"
+                    >
+                </label>
+                <label class="form-field">
+                    <span class="field-label">Gist ID</span>
+                    <input
+                        id="gist-id-input"
+                        class="text-input"
+                        type="text"
+                        placeholder="请输入目标 Gist ID"
+                        autocomplete="off"
+                    >
+                </label>
+            </div>
+            <div class="toolbar-row">
+                <button id="clear-config-button" class="button-link secondary-link" type="button" onclick="clearSavedConnectionConfig()">清除本地连接配置</button>
+            </div>
+        </section>
+
+        <section class="game-panel utility-panel">
+            <p class="eyebrow">Status</p>
+            <h2>当前状态</h2>
+            <div class="status-grid">
+                <article class="status-card">
+                    <span class="field-label">游戏运行</span>
+                    <strong class="status-value" id="running-state">未知</strong>
+                </article>
+                <article class="status-card">
+                    <span class="field-label">机器人状态</span>
+                    <strong class="status-value" id="robot-state">未知</strong>
+                </article>
+                <article class="status-card">
+                    <span class="field-label">Nexus 在线</span>
+                    <strong class="status-value" id="nexus-state">未知</strong>
+                </article>
+                <article class="status-card">
+                    <span class="field-label">最近活跃</span>
+                    <strong class="status-value" id="last-alive">--</strong>
+                </article>
+            </div>
+            <div class="toolbar-row">
+                <button id="refresh-status-button" class="button-link secondary-link" type="button" onclick="refreshStatusWithCooldown()">刷新状态</button>
+            </div>
+            <p id="page-status" class="status-message"></p>
+            <pre id="last-result" class="console-output"></pre>
+        </section>
+
+        <section class="game-panel utility-panel">
+            <p class="eyebrow">Control</p>
+            <h2>固定控制</h2>
+            <div class="form-grid">
+                <label class="form-field">
+                    <span class="field-label">启动账号别名</span>
+                    <input
+                        id="account-alias-input"
+                        class="text-input"
+                        type="text"
+                        placeholder="请输入 COACN_OneTime 使用的账号别名"
+                        autocomplete="off"
+                    >
+                </label>
+            </div>
+            <label class="toggle-row">
+                <input id="sweep-only-checkbox" type="checkbox">
+                <span>单人囚笼刷币</span>
+            </label>
+            <div class="action-grid">
+                <button data-action-button class="button-link primary-link" type="button" onclick="submitAction('COACN_OneTime', '启动')">启动</button>
+                <button data-action-button class="button-link danger-link" type="button" onclick="submitAction('COA_ROBOT_STOP', '停止')">停止</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../assets/js/pages/coa-controller.js"></script>
+</body>
+</html>

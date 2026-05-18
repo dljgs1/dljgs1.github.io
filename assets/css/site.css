@@ -108,6 +108,10 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    appearance: none;
+    cursor: pointer;
+    background: transparent;
+    font: inherit;
     border-radius: 999px;
     font-weight: 700;
     text-decoration: none;
@@ -132,6 +136,13 @@ a {
 .game-button:hover:not(:disabled) {
     background: #2b2b2b;
     color: #ffffff;
+}
+
+.button-link:disabled {
+    cursor: not-allowed;
+    border-color: #c9c9c5;
+    background: #e8e8e4;
+    color: #8a8a85;
 }
 
 .section-heading {
@@ -260,6 +271,151 @@ a {
     min-height: 24px;
     font-weight: 600;
     color: var(--accent);
+}
+
+.utility-panel h2 {
+    font-size: 24px;
+    letter-spacing: -0.03em;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.field-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.text-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--text);
+    font: inherit;
+}
+
+.text-input:focus {
+    outline: 2px solid rgba(17, 17, 17, 0.12);
+    outline-offset: 1px;
+}
+
+.toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.secondary-link {
+    border-color: var(--panel-border);
+    color: var(--text);
+}
+
+.secondary-link:hover {
+    border-color: #2b2b2b;
+}
+
+.danger-link {
+    border-color: #8f3a3a;
+    color: #8f3a3a;
+}
+
+.danger-link:hover {
+    background: #8f3a3a;
+    color: #ffffff;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.status-card {
+    display: grid;
+    gap: 10px;
+    min-height: 110px;
+    padding: 18px;
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    background: var(--panel);
+}
+
+.status-value {
+    font-size: 28px;
+    letter-spacing: -0.03em;
+}
+
+.status-ok {
+    color: #1f6b45;
+}
+
+.status-warn {
+    color: #8a6100;
+}
+
+.status-bad {
+    color: #9f2d2d;
+}
+
+.status-message {
+    min-height: 24px;
+    margin: 18px 0 0;
+    font-weight: 700;
+}
+
+.console-output {
+    margin: 12px 0 0;
+    padding: 16px;
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    background: #fafaf8;
+    color: var(--muted);
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.7;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+}
+
+.toggle-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.toggle-row input {
+    width: 16px;
+    height: 16px;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.action-grid .button-link {
+    width: 100%;
 }
 
 @media (max-width: 720px) {
